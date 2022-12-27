@@ -9,5 +9,6 @@ if (array_key_exists ("callback", $_GET)) {
 
 $outp = array ("answer" => "15");
 
-echo $callback . "(".json_encode($outp).")";
+$safecallback = htmlspecialchars($callback);
+echo $safecallback . "(".json_encode($outp).")";
 ?>
