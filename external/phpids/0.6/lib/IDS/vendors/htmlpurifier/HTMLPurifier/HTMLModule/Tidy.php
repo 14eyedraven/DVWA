@@ -200,7 +200,10 @@ class HTMLPurifier_HTMLModule_Tidy extends HTMLPurifier_HTMLModule
      * Defines all fixes the module will perform in a compact
      * associative array of fix name to fix implementation.
      */
-    public function makeFixes() {}
+    public function makeFixes() {
+        // Below, we should return something to the fix variable, so the program can be executed normally.
+        return null;
+    }
     
 }
 
