@@ -466,6 +466,7 @@ function dvwaButtonSourceHtmlGet( $pId ) {
 
 
 // Database Management --
+$DBMS_errorFunc = '';
 
 if( $DBMS == 'MySQL' ) {
 	$DBMS = htmlspecialchars(strip_tags( $DBMS ));
@@ -477,7 +478,6 @@ elseif( $DBMS == 'PGSQL' ) {
 }
 else {
 	$DBMS = "No DBMS selected.";
-	$DBMS_errorFunc = '';
 }
 
 //$DBMS_connError = '
