@@ -169,17 +169,11 @@ class Parsedown
         $Elements = array();
         $CurrentBlock = null;
 
-        foreach ($lines as $line)
-        {
-            if (chop($line) === '')
-            {
-                if (isset($CurrentBlock))
-                {
-                    $CurrentBlock['interrupted'] = (isset($CurrentBlock['interrupted'])
-                        ? $CurrentBlock['interrupted'] + 1 : 1
-                    );
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if ($line === '' && $currentBlock) {
+                    $currentBlock['interrupted']++;
                 }
-
                 continue;
             }
 
@@ -187,10 +181,9 @@ class Parsedown
             {
                 $shortage = 4 - mb_strlen($beforeTab, 'utf-8') % 4;
 
-                $line = $beforeTab
-                    . str_repeat(' ', $shortage)
-                    . substr($line, strlen($beforeTab) + 1)
-                ;
+                $line = $beforeTab . str_repeat(' ', $shortage);
+                $start = strlen($beforeTab) + 1;
+                $line .= substr($line, $start);
             }
 
             $indent = strspn($line, ' ');
