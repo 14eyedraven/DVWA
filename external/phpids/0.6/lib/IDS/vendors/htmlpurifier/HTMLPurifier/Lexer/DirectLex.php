@@ -133,7 +133,7 @@ class HTMLPurifier_Lexer_DirectLex extends HTMLPurifier_Lexer
                 $array[] = $token;
                 $cursor  = $position_next_lt + 1;
                 $inside_tag = true;
-                continue;
+                // continue;
             } elseif (!$inside_tag) {
                 // We are not inside tag but there are no more tags
                 // If we're already at the end, break
@@ -293,7 +293,7 @@ class HTMLPurifier_Lexer_DirectLex extends HTMLPurifier_Lexer
                 $array[] = $token;
                 $cursor = $position_next_gt + 1;
                 $inside_tag = false;
-                continue;
+                // continue;
             } else {
                 // inside tag, but there's no ending > sign
                 if ($e) $e->send(E_WARNING, 'Lexer: Missing gt');
@@ -309,7 +309,8 @@ class HTMLPurifier_Lexer_DirectLex extends HTMLPurifier_Lexer
                 $array[] = $token;
                 break;
             }
-            break;
+
+            // break;
         }
         
         $context->destroy('CurrentLine');
